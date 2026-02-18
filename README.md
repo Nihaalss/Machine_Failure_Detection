@@ -57,71 +57,6 @@ This project combines **machine learning** and **interactive data visualization*
 
 ---
 
-### Exploratory Data Analysis
-
-#### 1️⃣ **Data Cleaning**
-```python
-# Missing value treatment
-- Identified and handled missing values using median imputation for numerical features
-- Removed duplicate records (if any)
-- Outlier detection using IQR method and capping at 95th percentile
-
-# Data quality checks
-- Verified sensor reading ranges
-- Checked for data inconsistencies
-- Validated target variable distribution
-```
-
-#### 2️⃣ **Statistical Summary**
-- **Class Distribution:** 
-  - No Failure: 70%
-  - Failure: 30%
-  - Handled class imbalance using SMOTE/class weights
-
-- **Key Insights:**
-  - Strong correlation between Temperature and failure (0.72)
-  - High Mechanical Strain (USS × CS) indicates imminent failure
-  - VOC levels above 400 ppm significantly increase failure probability
-
-#### 3️⃣ **Visualization Insights**
-
-**Distribution Analysis:**
-- Temperature shows bimodal distribution (normal vs overheating)
-- Current Sensor readings positively skewed during failure events
-- Power Efficiency drops significantly before failures
-
-**Correlation Heatmap Findings:**
-```
-High Positive Correlations:
-- Temperature ↔ Failure (0.72)
-- Current Sensor ↔ Failure (0.65)
-- Mechanical Strain ↔ Failure (0.68)
-
-Engineered Features Impact:
-- Thermal Stress: 0.75 correlation with failure
-- Power Efficiency: -0.58 (inverse correlation)
-- Mechanical Strain: 0.68 correlation with failure
-```
-
-**Key EDA Findings:**
-1. **Temperature Critical Threshold:** Machines with actual temp > 85°C have 78% failure rate
-2. **Vibration + Current Combination:** When both USS > 4.0 AND CS > 8.0, failure rate jumps to 85%
-3. **VOC Environmental Factor:** High VOC (>400 ppm) accelerates failure by ~40%
-4. **Efficiency Decline:** Power efficiency below 15 indicates 65% failure probability
-
-#### 4️⃣ **Feature Importance**
-Based on LightGBM feature importance scores:
-1. **Thermal Stress** (28.5%) - Most important
-2. **Mechanical Strain** (22.3%)
-3. **Temperature** (18.7%)
-4. **Current Sensor** (12.4%)
-5. **Power Efficiency** (9.8%)
-6. **Ultrasonic Sensor** (4.2%)
-7. **VOC** (2.1%)
-8. **Others** (2.0%)
-
----
-
 ## 🏗️ Model Architecture
 
 ### Feature Engineering
@@ -150,83 +85,15 @@ Created three advanced features combining sensor readings:
 - Superior performance on imbalanced data
 - Feature importance extraction
 
-**Hyperparameters:**
-```python
-{
-    'objective': 'binary',
-    'metric': 'auc',
-    'boosting_type': 'gbdt',
-    'num_leaves': 31,
-    'learning_rate': 0.05,
-    'feature_fraction': 0.9,
-    'bagging_fraction': 0.8,
-    'bagging_freq': 5,
-    'max_depth': -1
-}
-```
-
-### Model Performance
-- **Accuracy:** 94.2%
-- **Precision:** 91.5%
-- **Recall:** 89.8%
-- **F1-Score:** 90.6%
-- **ROC-AUC:** 0.96
-
 **Confusion Matrix:**
 ```
-                Predicted
-              No Fail | Fail
-Actual  No     1420   |  80
-        Fail    65    |  435
+                    Predicted
+                  Fail | No Fail
+Actual  Fail      140  |  19
+        No Fail    27  |  3
 ```
 
----
-
-## 🚀 Installation
-
-### Prerequisites
-- Python 3.8 or higher
-- pip package manager
-
-### Step 1: Clone the Repository
-```bash
-git clone https://github.com/yourusername/machine-failure-prediction.git
-cd machine-failure-prediction
-```
-
-### Step 2: Create Virtual Environment (Optional but Recommended)
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Step 3: Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### Step 4: Verify Installation
-```bash
-python -c "import streamlit; import lightgbm; import pandas; print('All dependencies installed!')"
-```
-
----
-
-## 💻 Usage
-
-### Running the Dashboard
-
-```bash
-streamlit run machine_monitor_final.py
-```
-
-The dashboard will open automatically in your default browser at `http://localhost:8501`
-
+##💻 Running the Dashboard
 ### Using the Interface
 
 #### **Option 1: Quick Presets**
@@ -266,7 +133,7 @@ The dashboard will open automatically in your default browser at `http://localho
 ## 📁 Project Structure
 
 ```
-machine-failure-prediction/
+machine-failure/
 │
 ├── machine_monitor_final.py          # Main Streamlit dashboard
 ├── lgbm_machine_model.pkl            # Trained LightGBM model
@@ -331,38 +198,11 @@ machine-failure-prediction/
 ### Web Application
 - **Streamlit** - Interactive dashboard framework
 - **Joblib** - Model serialization
-- **HTML/CSS** - Custom styling
 
 ### Development Tools
 - **Jupyter Notebook** - Interactive development
 - **Git** - Version control
 - **VS Code** - Code editor
-
----
-
-## 🔮 Future Enhancements
-
-### Short-term (Next Release)
-- [ ] Add model explainability (SHAP values)
-- [ ] Export reports to PDF
-- [ ] Email/SMS alerts for critical conditions
-- [ ] Dark/Light theme toggle
-- [ ] Multi-language support
-
-### Medium-term
-- [ ] Real-time data streaming from IoT sensors
-- [ ] Database integration (PostgreSQL/MongoDB)
-- [ ] Historical data visualization (longer timeframes)
-- [ ] A/B testing for model improvements
-- [ ] REST API for integration with other systems
-
-### Long-term
-- [ ] Deep learning models (LSTM for time series)
-- [ ] Automated retraining pipeline
-- [ ] Multi-machine monitoring dashboard
-- [ ] Predictive maintenance scheduling system
-- [ ] Mobile app (iOS/Android)
-- [ ] Edge deployment for offline predictions
 
 ---
 
@@ -412,33 +252,6 @@ joblib.dump(X.columns.tolist(), 'feature_names.pkl')
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. **Commit your changes**
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. **Push to the branch**
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. **Open a Pull Request**
-
-### Contribution Guidelines
-- Follow PEP 8 style guide
-- Add tests for new features
-- Update documentation
-- Ensure all tests pass
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -454,33 +267,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
-
-- Thanks to [Anthropic](https://anthropic.com) for Claude AI assistance
-- LightGBM documentation and community
-- Streamlit for the amazing framework
-- Open-source community for inspiration
-
----
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [COMPLETE_GUIDE.md](COMPLETE_GUIDE.md) for detailed documentation
-2. Search existing [Issues](https://github.com/yourusername/machine-failure-prediction/issues)
-3. Create a new issue if needed
-4. Reach out via email
-
----
-
 ## ⭐ Show Your Support
 
 If this project helped you, please give it a ⭐ on GitHub!
-
----
-
-**Built with ❤️ for predictive maintenance and industrial IoT**
 
 ---
 
