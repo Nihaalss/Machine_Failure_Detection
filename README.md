@@ -9,21 +9,7 @@ An AI-powered predictive maintenance system that monitors industrial machinery i
 
 ![Dashboard Preview](https://via.placeholder.com/800x400?text=Machine+Failure+Monitor+Dashboard)
 
----
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Dataset & EDA](#dataset--eda)
-- [Model Architecture](#model-architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Screenshots](#screenshots)
-- [Technologies Used](#technologies-used)
-- [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -43,11 +29,10 @@ This project combines **machine learning** and **interactive data visualization*
 ## ✨ Features
 
 ### 🤖 Machine Learning Pipeline
-- **Data Cleaning & Preprocessing:** Handled missing values, outliers, and data normalization
 - **Exploratory Data Analysis (EDA):** Comprehensive statistical analysis and visualization
 - **Feature Engineering:** Created advanced features (Power Efficiency, Thermal Stress, Mechanical Strain)
-- **Model Training:** LightGBM gradient boosting classifier with hyperparameter optimization
-- **Model Evaluation:** Cross-validation, precision-recall analysis, and ROC curves
+- **Model Training:** LightGBM gradient boosting classifier
+- **Model Evaluation:** Model Performance
 
 ### 🌐 Interactive Dashboard
 - **Real-Time Monitoring:** Live sensor input via interactive sliders
@@ -71,14 +56,6 @@ This project combines **machine learning** and **interactive data visualization*
 | 🌡️ Temperature | Actual temperature | 50-100°C | Overheating risk |
 
 ---
-
-## 📊 Dataset & EDA
-
-### Data Collection
-- **Source:** Industrial IoT sensor data from manufacturing equipment
-- **Size:** ~10,000+ observations
-- **Time Period:** [Specify your timeframe]
-- **Target Variable:** Binary classification (Fail: 0/1)
 
 ### Exploratory Data Analysis
 
