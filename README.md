@@ -3,11 +3,10 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B.svg)](https://streamlit.io/)
 [![LightGBM](https://img.shields.io/badge/LightGBM-ML-green.svg)](https://lightgbm.readthedocs.io/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 An AI-powered predictive maintenance system that monitors industrial machinery in real-time and predicts failure probability using machine learning.
 
-![Dashboard Preview](https://via.placeholder.com/800x400?text=Machine+Failure+Monitor+Dashboard)
+![Dashboard Preview](https://nihaalss-machine-failure-detection-app2-0uicql.streamlit.app/)
 
 
 
