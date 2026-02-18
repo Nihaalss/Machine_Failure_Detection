@@ -507,13 +507,4 @@ If this project helped you, please give it a ⭐ on GitHub!
 
 ---
 
-## 📊 Project Statistics
-
-![GitHub stars](https://img.shields.io/github/stars/yourusername/machine-failure-prediction?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/machine-failure-prediction?style=social)
-![GitHub issues](https://img.shields.io/github/issues/yourusername/machine-failure-prediction)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/machine-failure-prediction)
-
----
-
 *Last Updated: February 2024*
